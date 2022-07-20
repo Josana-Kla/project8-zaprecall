@@ -1,14 +1,14 @@
 export default function Deck() {
     return(
-        <div>
+        <div className="content flex-center">
             <div> 
                 <header>
-                    <img src="../../public/assets/img/logo-pequeno.png" alt="logo" />
+                    <img src="../../public/assets/img/small-logo.png" alt="logo" />
                 </header>
                 <div className="flashcards">
                     <div className="flashcard">
                         <h2>Pergunta 1</h2>
-                        <ion-icon name=""></ion-icon>
+                        <ion-icon name="play-outline"></ion-icon>
                     </div>
                 </div>
             </div>
