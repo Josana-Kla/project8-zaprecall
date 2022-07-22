@@ -75,11 +75,9 @@ body {
         border: none;
     }
     
-    .flashcards button ion-icon {
+    .flashcards button img {
         width: 20px;
         height: 23px;
-    
-        color: #333333;
     }
     
     footer {
