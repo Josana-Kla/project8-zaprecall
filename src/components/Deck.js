@@ -1,36 +1,56 @@
 import React from "react";
+import QuestionsButton from "./QuestionsButton";
 
 export default function Deck(props) {
     const [ question, setQuestion ] = React.useState(true);
     const [ arrow, setArrow ] = React.useState(true);
 
+    const [ dontRemember, setDontRemember ] = React.useState(true);
+    const [ almostDontRemember, setAlmostDontRemember ] = React.useState(true);
+    const [ gotIt, setGotIt ] = React.useState(true);
+
+
+
+    function questionAnswered(props) {
+        if(!dontRemember) {
+            setDontRemember(<QuestionsButton number={props.questionNumber} />)
+        } else if(setAlmostDontRemember === !almostDontRemember) {
+            <QuestionsButton number={props.questionNumber} />
+        } else if(setGotIt === !gotIt) {
+            <QuestionsButton number={props.questionNumber} />
+        }
+    }
+
     return (
         <>
             { question ? (
-                <button onClick={() => setQuestion(!question)} className="flex-center">
-                    <h2>Pergunta {props.questionNumber}</h2>
-                    <img src={props.iconName} alt="" />
-                </button>
+                <QuestionsButton setQuestionP={setQuestion} questionP={question} number={props.questionNumber} image={props.iconName}> 
+                </QuestionsButton>
             ) : (
-                <FlashcardQuestion>
-                    <>
-                        { arrow ? (
-                            <>
-                                <p>O que é JSX?fkjd Lorem ajdaaihdiahfiuehdiasdoi aufhiuahdoiad aodhaiuehfaojdioaohfiua iauhda</p>
-                                <img onClick={() => setArrow(!arrow)} src="../../assets/img/arrow.svg" alt="" />
-                            </>
-                        ) : (
-                            <>
+                <>
+                    { arrow ? (
+                        <FlashcardQuestion>
+                            <p>O que é JSX?fkjd Lorem ajdaaihdiahfiuehdiasdoi aufhiuahdoiad aodhaiuehfaojdioaohfiua iauhda</p>
+                            <img onClick={() => setArrow(!arrow)} src="../../assets/img/arrow.svg" alt="" />
+                        </FlashcardQuestion>
+                    ) : (
+                        <>
+                        {  (dontRemember && almostDontRemember && gotIt) ? (
+                            <FlashcardQuestion>
                                 <p>Oyuiooiuytrdfkytdxcvbnkiuytfdda</p>
                                 <div className="button-answers">
-                                    <button>Não lembrei</button>
-                                    <button>Quase não lembrei</button>
-                                    <button>Zap!</button>
+                                    <button onClick={() => setDontRemember(!dontRemember)}>Não lembrei</button>
+                                    <button onClick={() => setAlmostDontRemember(!almostDontRemember)}>Quase não lembrei</button>
+                                    <button onClick={() => setGotIt(!gotIt)}>Zap!</button>
                                 </div>
-                            </>
+                            </FlashcardQuestion>
+                        ) : (
+                            <QuestionsButton number={props.questionNumber} />
                         )}
-                    </>
-                </FlashcardQuestion>
+                        </>
+                    )}
+                </>
+               
             )}
         </>
     )

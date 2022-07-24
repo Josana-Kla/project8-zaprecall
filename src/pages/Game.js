@@ -1,6 +1,5 @@
 import Deck from "../components/Deck";
 
-
 const flashcards = [ 
     { number:"1", image:"../../assets/img/play-outline.svg" },
     { number:"2", image:"../../assets/img/play-outline.svg" },
@@ -29,7 +28,7 @@ export default function Game() {
 
             <footer className="flex-center">
                 <div className="content-bottom">
-                    <h3>0/4 CONCLUÍDOS</h3>
+                    <h3>0/{flashcards.length} CONCLUÍDOS</h3>
                 </div>
             </footer>
         </div>
