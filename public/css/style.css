@@ -96,9 +96,9 @@ body {
         font-weight: 700;
     }
     
-    .flashcards button img {
-        width: 20px;
-        height: 23px;
+    .flashcards button ion-icon {
+        width: 28px;
+        height: 30px;
     }
 
     .question {
