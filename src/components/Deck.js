@@ -21,7 +21,7 @@ export default function Deck( {
 
     if(counter === 0) {
         return (
-            <QuestionsButton setCounter={setCounter} counter={counter} number={questionNumber} icon={iconName} icone={icon} />
+            <QuestionsButton setCounter={setCounter} counter={counter} number={questionNumber} icon={iconName} />
         )
     } else if(counter === 1) {
         return (
@@ -43,7 +43,12 @@ export default function Deck( {
         )
     } else if(counter === 3) {
         return (
-            <QuestionsButton setCounter={setCounter} counter={counter} number={questionNumber} icon={icon} />
+            <QuestionsButton setCounter={setCounter} counter={counter} number={questionNumber} icon={icon}>
+                <button>
+                    <h2>Pergunta {questionNumber}</h2>
+                    <ion-icon name={icon} />
+                </button>
+            </QuestionsButton>
         )
     }
 }
