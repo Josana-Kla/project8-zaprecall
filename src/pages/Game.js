@@ -1,3 +1,4 @@
+import React from "react";
 import Deck from "../components/Deck";
 
 const flashcards = [ 
@@ -16,6 +17,8 @@ function shuffle() {
 }
 
 export default function Game() {
+  
+
     return(
         <div>
             <div className="content flex-center"> 
@@ -25,7 +28,7 @@ export default function Game() {
                 </header>
                 <div className="flashcards flex-center">
                     {flashcards.map(flashcard => (
-                        <Deck questionNumber={flashcard.number} iconName={flashcard.icon} listOfQuestions={flashcard.questionAboutProgramming} answerListOfQuestion={flashcard.answerAboutProgramming} /> 
+                        <Deck questionNumber={flashcard.number} iconName={flashcard.icon} listOfQuestions={flashcard.questionAboutProgramming} answerListOfQuestion={flashcard.answerAboutProgramming}/> 
                     ))}
                 </div>
             </div>

@@ -2,7 +2,12 @@ import React from "react";
 import QuestionsButton from "./QuestionsButton";
 
 
-export default function Deck(props) {
+export default function Deck( {
+    answerListOfQuestion,
+    iconName,
+    listOfQuestions,
+    questionNumber
+ } ) {
 
     const [ icon, setIcon ] = React.useState("");
     const [ counter, setCounter ] = React.useState(0);
@@ -11,30 +16,34 @@ export default function Deck(props) {
 
     function questionAnswered(icon) {
         setIcon(icon);
-        setCounter(counter === 0);
+        setCounter(counter+1);
     }
 
     if(counter === 0) {
         return (
-            <QuestionsButton setCounter={setCounter} counter={counter} number={props.questionNumber} icon={props.iconName} icone={icon} />
+            <QuestionsButton setCounter={setCounter} counter={counter} number={questionNumber} icon={iconName} icone={icon} />
         )
     } else if(counter === 1) {
         return (
             <FlashcardQuestion>
-                <p>{props.listOfQuestions}</p>
+                <p>{listOfQuestions}</p>
                 <img onClick={() => setCounter(counter+1)} src="../../assets/img/arrow.svg" alt="" />
             </FlashcardQuestion>
         )
     } else if(counter === 2) {
         return(
             <FlashcardQuestion>
-                <p>{props.answerListOfQuestion}</p>
+                <p>{answerListOfQuestion}</p>
                 <div className="button-answers">
                     <button onClick={() => questionAnswered("close-circle")}>Não lembrei</button>
                     <button onClick={() => questionAnswered("help-circle")}>Quase não lembrei</button>
                     <button onClick={() => questionAnswered("checkmark-circle")}>Zap!</button>
                 </div>
             </FlashcardQuestion>
+        )
+    } else if(counter === 3) {
+        return (
+            <QuestionsButton setCounter={setCounter} counter={counter} number={questionNumber} icon={icon} />
         )
     }
 }
